@@ -1,0 +1,25 @@
+{% extends 'encyclopedia/layout.html' %}
+
+
+{% block title %}
+    Encyclopedia
+{% endblock%} 
+
+{% block body%}
+
+<h1 > Edit Entry </h1>
+<form action="{% url 'newpage'%}" method="POST">
+    {% csrf_token %}
+    <div class="form-floating">
+        <label for="floatingTextarea2">Title:</label>
+        <textarea name="title" class="form-control" placeholder="Title..." id="floatingTextarea2" style="height: 50px; width: 800px;" >{{title}}</textarea>
+    
+        <label for="floatingTextarea2">Content (Markdown Syntax):</label>
+        <textarea name="content" class="form-control" placeholder="Content..." id="floatingTextarea2" style="height: 200px; width: 800px;">{{content}}</textarea>
+        <input type="hidden" name="editPage" value="True">
+    </div>  
+    <button name="{{title}}" type="submit" class="btn btn-success" style="margin: 20px; padding: 10px 20px 10px 20px;">Save</button>
+
+</form>
+    
+{% endblock%}
